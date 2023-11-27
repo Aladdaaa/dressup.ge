@@ -2,6 +2,7 @@ import StepObject.RegistrationPageSteps;
 import Utils.ChromeRunner;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.selector.ByText;
+import io.qameta.allure.Description;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -13,6 +14,7 @@ import static com.codeborne.selenide.Selenide.*;
 public class DressupTest extends ChromeRunner {
     RegistrationPageSteps RegistrationPageSteps = new RegistrationPageSteps();
     @Test
+    @Description("dressup")
     public void Dressuptest(){
         RegistrationPageSteps
                 .GoToRegistration()

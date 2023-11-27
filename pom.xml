@@ -12,6 +12,9 @@
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <aspectj.version>1.9.20.1</aspectj.version>
+        <allure.results.directory>allure-results</allure.results.directory>
+        <allure.report.directory>allure-report</allure.report.directory>
     </properties>
 
     <dependencies>
@@ -19,6 +22,21 @@
             <groupId>com.codeborne</groupId>
             <artifactId>selenide</artifactId>
             <version>7.0.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>${aspectj.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-selenide</artifactId>
+            <version>2.24.0</version>
+        </dependency>
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-selenide</artifactId>
+            <version>2.24.0</version>
         </dependency>
 
         <dependency>
@@ -42,7 +60,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.0.0-M7</version>
+                <version>3.2.2</version>
                 <configuration>
                     <suiteXmlFiles>
                         <suiteXmlFile>Testng.xml</suiteXmlFile>
@@ -50,8 +68,17 @@
                     <includes>
                         <include>**/*Tests.java</include>
                     </includes>
+                    <argLine>
+                        -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
+                    </argLine>
+                    <systemPropertyVariables>
+                        <propertyName>propertyValue</propertyName>
+                        <buildDirectory>${project.build.directory}</buildDirectory>
+                        [...]
+                    </systemPropertyVariables>
                 </configuration>
             </plugin>
+
         </plugins>
     </build>
 
