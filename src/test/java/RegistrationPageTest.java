@@ -3,19 +3,18 @@ import Utils.ChromeRunner;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.selector.ByText;
 import io.qameta.allure.Description;
-import org.openqa.selenium.By;
+import net.bytebuddy.build.Plugin;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import static DataObject.RegistrationPageData.*;
-import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.*;
 
-public class DressupTest extends ChromeRunner {
+public class RegistrationPageTest extends ChromeRunner {
     RegistrationPageSteps RegistrationPageSteps = new RegistrationPageSteps();
     @Test
     @Description("dressup")
-    public void Dressuptest(){
+    public void PositiveRegistrationPageTest(){
         RegistrationPageSteps
                 .GoToRegistration()
                 .GoToRegistrationPage()
@@ -28,5 +27,25 @@ public class DressupTest extends ChromeRunner {
                 .FillCheckbox2();
         Assert.assertTrue(RegistrationPageSteps.registrationButtonInput.is(Condition.visible));
     }
+        @Test
+    public void NegativeRegistrationPageTest(){
+        RegistrationPageSteps
+                    .GoToRegistration()
+                    .GoToRegistrationPage()
+                    .FillEmail( email)
+                    .FillFirstName(firstName)
+                    .FillLastName(lastName)
+                    .FillSpecialNumber(personalNumber)
+                    .FillCheckbox()
+                    .FillCheckbox2()
+                    .RegButtonClick();
+            Assert.assertFalse(RegistrationPageSteps.massageInput.is(Condition.visible));
+
+
+
+            Assert.assertTrue(RegistrationPageSteps.registrationButtonInput.is(Condition.visible));
+
+
+        }
 
 }

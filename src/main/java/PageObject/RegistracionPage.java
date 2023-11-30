@@ -2,6 +2,7 @@ package PageObject;
 
 import com.codeborne.selenide.SelenideElement;
 
+import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.$;
 
@@ -16,7 +17,10 @@ public class RegistracionPage {
             passwordInput = $(byXpath("//*[@id=\"customer-form\"]/section/div[5]/div[1]/div/input")),
             checkboxInput = $("#ff_optin"),
             checkboxInput2 = $("#ff_newsletter"),
+            massageInput = $(byText("Please fill out this field.")),
+
 
     registrationButtonInput = $(byXpath("//*[@id=\"customer-form\"]/footer/button"));
 }
+
 

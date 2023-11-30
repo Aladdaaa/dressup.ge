@@ -5,19 +5,23 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.example</groupId>
-    <artifactId>NewTestng</artifactId>
+    <artifactId>dressup.ge</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <aspectj.version>1.9.20.1</aspectj.version>
-        <allure.results.directory>allure-results</allure.results.directory>
-        <allure.report.directory>allure-report</allure.report.directory>
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>net.sourceforge.jexcelapi</groupId>
+            <artifactId>jxl</artifactId>
+            <version>2.6.12</version>
+        </dependency>
         <dependency>
             <groupId>com.codeborne</groupId>
             <artifactId>selenide</artifactId>
@@ -27,6 +31,7 @@
             <groupId>org.aspectj</groupId>
             <artifactId>aspectjweaver</artifactId>
             <version>${aspectj.version}</version>
+            <scope>runtime</scope>
         </dependency>
         <dependency>
             <groupId>io.qameta.allure</groupId>
@@ -50,11 +55,7 @@
             <artifactId>maven-compiler-plugin</artifactId>
             <version>3.10.1</version>
         </dependency>
-
-
     </dependencies>
-
-
     <build>
         <plugins>
             <plugin>
@@ -71,14 +72,8 @@
                     <argLine>
                         -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
                     </argLine>
-                    <systemPropertyVariables>
-                        <propertyName>propertyValue</propertyName>
-                        <buildDirectory>${project.build.directory}</buildDirectory>
-                        [...]
-                    </systemPropertyVariables>
                 </configuration>
             </plugin>
-
         </plugins>
     </build>
 

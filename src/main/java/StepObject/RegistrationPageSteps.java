@@ -48,6 +48,10 @@ public class RegistrationPageSteps extends RegistracionPage {
         checkboxInput2.click();
         return this;
     }
+    public RegistrationPageSteps RegButtonClick(){
+        registrationButtonInput.click();
+        return this;
+    }
 }
 
 
